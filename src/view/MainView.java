@@ -7,12 +7,16 @@ import java.awt.event.ActionListener;
 
 public class MainView extends JFrame {
 
-    private JButton openInfo;
+    private JButton answerButton;
+
+    private JRadioButton radioButton1, radioButton2, radioButton3, radioButton4;
+
+    private JLabel questionLabel, answer1, answer2, answer3, answer4;
 
     public MainView(int width, int height){
 
         setSize(width, height);
-        setTitle("User Interface Beispiel");
+        setTitle("Java Quiz");
         setDefaultCloseOperation( DISPOSE_ON_CLOSE );
         setVisible(true);
         addUIComponents();
@@ -26,25 +30,72 @@ public class MainView extends JFrame {
         JPanel topPanel = new JPanel();
         JPanel centerPanel = new JPanel();
         JPanel bottomPanel = new JPanel();
+        JPanel radioButtonPanel = new JPanel();
 
         //dem Fenster die erzeugten Panel hinzufügen
         add(topPanel, BorderLayout.NORTH);
         add(centerPanel, BorderLayout.CENTER);
+        add(radioButtonPanel, BorderLayout.WEST);
         add(bottomPanel, BorderLayout.SOUTH);
 
         //Center Panel bekommt flexibles Gridlayout
-        centerPanel.setLayout(new GridLayout(1, 3));
+        centerPanel.setLayout(new GridLayout(4, 1));
         centerPanel.setBorder( new EmptyBorder(5, 5, 5, 5));
 
+        radioButtonPanel.setLayout(new GridLayout(4, 1));
+        radioButtonPanel.setBorder( new EmptyBorder(5, 5, 5, 5));
+
         //Label erzeugen und topPanel hinzufügen
-        JLabel label = new JLabel("Optionen");
-        topPanel.add(label);
+        questionLabel = new JLabel("Frage");
+        topPanel.add(questionLabel);
 
         //Button erzeugen und dem bottomPanel hinzufügen
-        openInfo = new JButton("Info");
-        bottomPanel.add(openInfo);
+        answerButton = new JButton("Antworten");
+        bottomPanel.add(answerButton);
 
+        //Radio Buttons erzeugen
+        radioButton1 = new JRadioButton("A");
+        radioButton2 = new JRadioButton("B");
+        radioButton3 = new JRadioButton("C");
+        radioButton4 = new JRadioButton("D");
+
+        ButtonGroup radioButtonGroup = new ButtonGroup();
+        radioButtonGroup.add(radioButton1);
+        radioButtonGroup.add(radioButton2);
+        radioButtonGroup.add(radioButton3);
+        radioButtonGroup.add(radioButton4);
+
+        //Label mit Antwortmoeglichkeiten
+        answer1 = new JLabel("Antwort 1");
+        answer2 = new JLabel("Antwort 2");
+        answer3 = new JLabel("Antwort 3");
+        answer4 = new JLabel("Antwort 4");
+
+        radioButtonPanel.add(radioButton1);
+        centerPanel.add(answer1);
+        radioButtonPanel.add(radioButton2);
+        centerPanel.add(answer2);
+        radioButtonPanel.add(radioButton3);
+        centerPanel.add(answer3);
+        radioButtonPanel.add(radioButton4);
+        centerPanel.add(answer4);
     }
+
+    public void setQuestionText(String question){
+          questionLabel.setText(question);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * Fügt einen Eventlistener hinzu, der auf die Methode verweist
@@ -52,7 +103,7 @@ public class MainView extends JFrame {
      */
     public void addInfoButtonHandler( ActionListener listener)
     {
-        openInfo.addActionListener(listener);
+       // openInfo.addActionListener(listener);
     }
 
 
