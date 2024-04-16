@@ -16,8 +16,8 @@ public class QuizDAO {
     public QuizDAO(){
         //ToDo laden der Daten von CSV Datei
 
-        String csv = getTextFromCSV("C:\\Users/priva/javaQuiz.txt");
-        System.out.println(csv);
+        String csvText = getTextFromCSV("C:\\Users/priva/javaQuiz.txt");
+        System.out.println(csvText);
     }
 
     private String getTextFromCSV( String file ){
