@@ -20,11 +20,11 @@ public class QuizDAO {
         System.out.println(csv);
     }
 
-    private String getTextFromCSV( String url ){
+    private String getTextFromCSV( String file ){
         String csv = "";
         try {
             //Funktionalität die Fehler verursachen könnte
-           csv = Files.readString( Path.of(url) );
+           csv = Files.readString( Path.of(file) );
            return csv;
         }
         catch ( IOException error){
