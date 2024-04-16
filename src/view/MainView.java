@@ -85,6 +85,14 @@ public class MainView extends JFrame {
           questionLabel.setText(question);
     }
 
+    public void setAnswersText( String[] answers){
+        //ToDo Antworten an TextLabel übergeben
+    }
+
+    public void addAnswerButtonHandler( ActionListener listener){
+        //ToDo Lister an den Antwort übergeben
+    }
+
 
 
 
