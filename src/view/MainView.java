@@ -52,6 +52,7 @@ public class MainView extends JFrame {
         //Button erzeugen und dem bottomPanel hinzufügen
         answerButton = new JButton("Antworten");
         bottomPanel.add(answerButton);
+        answerButton.setEnabled(false);
 
         //Radio Buttons erzeugen
         radioButton1 = new JRadioButton("A");
@@ -86,11 +87,14 @@ public class MainView extends JFrame {
     }
 
     public void setAnswersText( String[] answers){
-        //ToDo Antworten an TextLabel übergeben
+        answer1.setText( answers[0] );
+        answer2.setText( answers[1] );
+        answer3.setText( answers[2] );
+        answer4.setText( answers[3] );
     }
 
     public void addAnswerButtonHandler( ActionListener listener){
-        //ToDo Lister an den Antwort übergeben
+        answerButton.addActionListener(listener);
     }
 
 
