@@ -54,7 +54,7 @@ public class QuizDAO {
 
     private List<Question> parseCSV( String csv){
 
-        List<Question> list = new ArrayList<>();
+        List<Question>  list = new ArrayList<>();
 
         String[] lines = csv.split("[\\r\\n]+");
 
