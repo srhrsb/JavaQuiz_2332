@@ -93,6 +93,7 @@ public class MainView extends JFrame {
     }
 
     public void addAnswerButtonHandler( ActionListener listener){
+
         answerButton.addActionListener(listener);
     }
 

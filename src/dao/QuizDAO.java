@@ -12,13 +12,8 @@ import java.util.List;
 
 public class QuizDAO {
 
+    //enthält alle Fragen vom Quiz
     private List<Question> questionList = new ArrayList<>();
-
-    public Question getNextQuestion() {
-        Question question = questionList.getFirst();
-        questionList.remove( question );
-        return question;
-    }
 
     public QuizDAO(){
         //ToDo laden der Daten von CSV Datei
@@ -28,6 +23,7 @@ public class QuizDAO {
 
         //übergabe des Textes an unseren Parser, der uns die Liste der Fragen
         //zurückgibt
+        if(csvText == null) return;
         questionList = parseCSV(csvText);
         System.out.println( questionList);
 
@@ -54,6 +50,8 @@ public class QuizDAO {
     private List<Question> parseCSV( String csv){
 
         List<Question>  list = new ArrayList<>();
+        //Text in Zeilen aufteilen, mit Angabe des Trenners
+        //für den Zeilenumbruch
         String[] lines = csv.split("[\\r\\n]+");
 
         for( String line : lines){
@@ -62,12 +60,20 @@ public class QuizDAO {
             //Object der List zuweisen
             String[] answers = { words[1], words[2], words[3], words[4] };
             int correct = Integer.parseInt(words[5]);
+            //Erzeugen des Question-Objektes
+            // mit den geparsten Daten
             Question question = new Question( words[0], answers, correct );
+            //Das Objekt der Liste hinzufügen
             list.add( question );
         }
         return list;
     }
 
+    public Question getNextQuestion() {
+        Question question = questionList.getFirst();
+        questionList.remove( question );
+        return question;
+    }
 
 
 }
