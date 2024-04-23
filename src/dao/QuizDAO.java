@@ -48,7 +48,6 @@ public class QuizDAO {
             //Fehlerbehandlung
             System.out.println("Fehler: "+ error);
         }
-
         return null;
     }
 

@@ -48,7 +48,6 @@ public class MainView extends JFrame {
         //Label erzeugen und topPanel hinzufügen
         questionLabel = new JLabel("Frage");
         topPanel.add(questionLabel);
-
         //Button erzeugen und dem bottomPanel hinzufügen
         answerButton = new JButton("Antworten");
         bottomPanel.add(answerButton);

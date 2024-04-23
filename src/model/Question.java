@@ -34,7 +34,6 @@ public class Question {
     public int getCorrect() {
         return correct;
     }
-
     public void setCorrect(int correct) {
         this.correct = correct;
     }
