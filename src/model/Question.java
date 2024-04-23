@@ -32,7 +32,7 @@ public class Question {
     }
 
     public int getCorrect() {
-        return correct;
+        return this.correct;
     }
     public void setCorrect(int correct) {
         this.correct = correct;

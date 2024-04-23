@@ -11,7 +11,7 @@ public class MainView extends JFrame {
 
     private JRadioButton radioButton1, radioButton2, radioButton3, radioButton4;
 
-    private JLabel questionLabel, answer1, answer2, answer3, answer4;
+    private JLabel scoreLabel, questionLabel, answer1, answer2, answer3, answer4;
 
     public MainView(int width, int height){
 
@@ -46,8 +46,11 @@ public class MainView extends JFrame {
         radioButtonPanel.setBorder( new EmptyBorder(5, 5, 5, 5));
 
         //Label erzeugen und topPanel hinzufügen
+        scoreLabel = new JLabel();
         questionLabel = new JLabel("Frage");
+        topPanel.add(scoreLabel);
         topPanel.add(questionLabel);
+
         //Button erzeugen und dem bottomPanel hinzufügen
         answerButton = new JButton("Antworten");
         bottomPanel.add(answerButton);
@@ -92,10 +95,48 @@ public class MainView extends JFrame {
         answer4.setText( answers[3] );
     }
 
+    public void setScoreText( int score ){
+        scoreLabel.setText( "Score: "+score );
+    }
+
     public void addAnswerButtonHandler( ActionListener listener){
 
         answerButton.addActionListener(listener);
     }
+
+    public void addRadioButtonsHandler( ActionListener listener){
+        radioButton1.addActionListener(listener);
+        radioButton2.addActionListener(listener);
+        radioButton3.addActionListener(listener);
+        radioButton4.addActionListener(listener);
+    }
+
+    public void setAnswerButtonActivity( boolean active){
+        answerButton.setEnabled(active);
+    }
+
+    public int getActiveAnswer(){
+
+        if(radioButton1.isSelected() ){
+            return 0;
+        }
+        else if(radioButton2.isSelected() ){
+            return 1;
+        }
+        else if(radioButton3.isSelected() ){
+            return 2;
+        }
+        else if(radioButton4.isSelected() ){
+            return 3;
+        }
+
+        return -1;
+    }
+
+
+
+
+
 
 
 
