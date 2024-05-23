@@ -9,55 +9,70 @@ import java.awt.event.ActionEvent;
 public class MainController {
 
     private final MainView view;
-    private final QuizDAO quizData;
+    Question currentQuestion;
+
+    private QuizDAO quizData;
     private int score = 0;
 
-    public MainController(MainView view, QuizDAO quizData){
+    public MainController(MainView view){
         this.view = view;
-        this.quizData = quizData;
-        nextQuestion(null);
+        startQuiz("quizData/javaQuiz.txt");
         view.addAnswerButtonHandler( this::nextQuestion);
         view.addRadioButtonsHandler(this::enableAnswerButton);
     }
 
     public static void main(String[] args) {
-
         new MainController(
-                new MainView(600, 300),
-                new QuizDAO()
+                new MainView(600, 300)
         );
     }
 
     private void nextQuestion( ActionEvent actionEvent ){
-        Question question = quizData.getNextQuestion();
-        if(question != null){
-            int activeRadioButton = view.getActiveAnswer();
-            if(activeRadioButton != -1){//bei Start wäre -1
-                 int correct = question.getCorrect();
-                 if(activeRadioButton == correct){
-                     //die Antwort war richtig
-                     this.score++;
 
-                 }
-//                 else{
-//                     //die Antwort war falsch
-//
-//                 }
-            }
+        view.setAnswerButtonActivity( false );
+        int activeRadioButton = view.getActiveAnswer();
 
-            view.setAnswersText( question.getAnswersText() );
-            view.setQuestionText( question.getQuestionText() );
-            view.setScoreText(score);
+        if(activeRadioButton != -1 && currentQuestion != null){//bei Start wäre -1
+
+            if(activeRadioButton == currentQuestion.getCorrect())
+                this.score++;
+        }
+
+        view.setScoreText(score);
+
+        currentQuestion = quizData.getNextQuestion();
+
+        if(currentQuestion != null){
+            view.setAnswersText( currentQuestion.getAnswersText() );
+            view.setQuestionText( currentQuestion.getQuestionText() );
         }
         else{
-            //Ende der Fragen erreicht => Auswertung starten
+            evaluate(score);
         }
+
+        view.uncheckAllRadioButtons();
     }
 
-private void enableAnswerButton(ActionEvent actionEvent){
-   view.setAnswerButtonActivity(true);
-}
+    private void enableAnswerButton(ActionEvent actionEvent){
+            view.setAnswerButtonActivity(true);
+    }
 
-private void evaluate(){}
+    private void startQuiz( String file ){
+        quizData = new QuizDAO(file);
+        nextQuestion(null);
+    }
+
+    private void evaluate( int score ){
+        String message = "Du hast es geschafft!\n";
+        message +="Richtig beantwortete Fragen: "+score+"\n\n";
+        message +="Möchtest Du nochmal spielen?\n\n";
+
+        if(view.confirmWindow(message)){
+            startQuiz("quizData/javaQuiz.txt");
+        }
+        else{
+            System.exit(0);
+        }
+    }
 
 }

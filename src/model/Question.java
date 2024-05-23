@@ -2,9 +2,6 @@ package model;
 
 public class Question {
 
-
-    //4 Antworten, 1Frage, welche Antwort ist richtig
-
     private String questionText;
     private String[] answersText;
     private int correct;

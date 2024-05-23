@@ -1,0 +1,5 @@
+Welcher Typ in Java kann Zeichenketten speichern?,Integer,Char,Float,String,3
+Welcher Typ in Java kann Fließkommazahlen einfacher Genauigkeit speichern?,Integer,Char,Float,String,2
+Wonach bemisst sich starke oder schwache Typisierung?,danach wie streng die Sprache zwischen Typen unterscheidet,ob alles groß geschrieben wird,nach der Syntax,ob es Klassen gibt oder nicht,0
+Sind Klassen auch Typen in Java?,Nein,Nur Oberklassen,Ja,Nur Unterklassen,2
+Wieviel Speicherplatz benötigt ein Fließkommazahl einfacher Genauigkeit?,8,32,16,64,1
