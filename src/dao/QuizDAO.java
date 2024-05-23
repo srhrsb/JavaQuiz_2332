@@ -57,12 +57,13 @@ public class QuizDAO {
     }
 
     public Question getNextQuestion() {
-        try {
+
+        if( !questionList.isEmpty() ){
             Question question = questionList.getFirst();
             questionList.remove( question );
             return question;
         }
-        catch (Exception e){
+        else{
             return null;
         }
     }

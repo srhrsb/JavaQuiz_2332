@@ -17,8 +17,8 @@ public class MainController {
     public MainController(MainView view){
         this.view = view;
         startQuiz("quizData/javaQuiz.txt");
-        view.addAnswerButtonHandler( this::nextQuestion);
-        view.addRadioButtonsHandler(this::enableAnswerButton);
+        view.addAnswerButtonHandler( this::nextQuestion );
+        view.addRadioButtonsHandler( this::enableAnswerButton );
     }
 
     public static void main(String[] args) {
@@ -60,6 +60,7 @@ public class MainController {
     private void startQuiz( String file ){
         quizData = new QuizDAO(file);
         nextQuestion(null);
+        score = 0;
     }
 
     private void evaluate( int score ){
@@ -74,5 +75,4 @@ public class MainController {
             System.exit(0);
         }
     }
-
 }

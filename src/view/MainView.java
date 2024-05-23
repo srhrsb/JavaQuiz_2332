@@ -152,8 +152,4 @@ public class MainView extends JFrame {
     public boolean confirmWindow(String text){
         return JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(this, text, "Quizauswertung",  JOptionPane.YES_NO_OPTION);
     }
-
-
-
-
 }
